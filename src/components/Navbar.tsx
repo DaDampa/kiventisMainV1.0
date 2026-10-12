@@ -101,29 +101,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Boost your processes, save license costs</span>
             </div>
 
-            {/* Desktop Navigation: Only Live-Demos + Main Menu Trigger per User Request */}
-            <nav className="hidden md:flex items-center gap-3">
-              {/* Highlighted Live-Demos Link */}
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-2">
               <a
                 href="#beispiele"
-                className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
                   isSepia
-                    ? 'bg-[#0D9488]/10 text-[#0D9488] hover:bg-[#0D9488]/15 border border-[#0D9488]/20'
-                    : 'bg-[#14B8A6]/10 text-[#14B8A6] hover:bg-[#14B8A6]/15 border border-[#14B8A6]/20'
+                    ? 'text-[#5C5042] hover:text-[#18130E] hover:bg-[#EFE8DC]'
+                    : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
-                <span className="relative flex h-2 w-2">
-                  <span
-                    className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
-                      isSepia ? 'bg-[#0D9488]' : 'bg-[#14B8A6]'
-                    }`}
-                  />
-                  <span
-                    className={`relative inline-flex rounded-full h-2 w-2 ${
-                      isSepia ? 'bg-[#0D9488]' : 'bg-[#14B8A6]'
-                    }`}
-                  />
-                </span>
                 <span>{t.demos}</span>
               </a>
 
@@ -449,16 +436,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                       href="#beispiele"
                       onClick={handleNavClick}
                       className={`group flex items-start gap-3 p-3 rounded-xl transition-all ${
-                        isSepia
-                          ? 'bg-[#0D9488]/10 hover:bg-[#0D9488]/15 border border-[#0D9488]/20'
-                          : 'bg-[#14B8A6]/10 hover:bg-[#14B8A6]/15 border border-[#14B8A6]/20'
+                        isSepia ? 'hover:bg-[#EFE8DC]' : 'hover:bg-white/[0.05]'
                       }`}
                     >
                       <div
                         className={`h-9 w-9 rounded-lg border flex items-center justify-center shrink-0 ${
                           isSepia
-                            ? 'border-[#0D9488]/30 bg-white text-[#0D9488]'
-                            : 'border-[#14B8A6]/30 bg-[#14B8A6]/20 text-[#14B8A6]'
+                            ? 'border-[#D5C9B7] bg-[#FCFAF7] text-[#0D9488]'
+                            : 'border-white/10 bg-white/[0.04] text-[#14B8A6]'
                         }`}
                       >
                         <Sparkles className="h-4 w-4" />
@@ -466,11 +451,19 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <div>
                         <div
                           className={`font-semibold text-sm flex items-center gap-1.5 ${
-                            isSepia ? 'text-[#0D9488]' : 'text-[#14B8A6]'
+                            isSepia
+                              ? 'group-hover:text-[#0D9488] text-[#18130E]'
+                              : 'group-hover:text-[#14B8A6] text-white'
                           }`}
                         >
                           <span>{t.demos}</span>
-                          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded uppercase font-bold border border-current">
+                          <span
+                            className={`text-[10px] font-mono px-1.5 py-0.5 rounded uppercase font-bold border ${
+                              isSepia
+                                ? 'border-[#D5C9B7] bg-[#FAF8F5] text-[#5C5042]'
+                                : 'border-white/10 bg-white/[0.06] text-slate-300'
+                            }`}
+                          >
                             {lang === 'de' ? 'Interaktiv' : 'Interactive'}
                           </span>
                         </div>

@@ -357,22 +357,22 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({
                 </p>
 
                 {/* Schematic Compliance Shield Mockup */}
-                <div className="mt-4 rounded-xl border border-emerald-500/30 bg-emerald-500/[0.05] p-3.5 font-mono text-xs">
-                  <div className="flex items-center justify-between pb-2 border-b border-emerald-500/20 text-[11px]">
+                <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.02] p-3.5 font-mono text-xs">
+                  <div className="flex items-center justify-between pb-2 border-b border-white/[0.08] text-[11px]">
                     <span className="text-emerald-400 font-bold">REGULATION (EU) 2024/1689</span>
-                    <span className="text-emerald-300 text-[10px]">ART. 4 ABS. 1</span>
+                    <span className="text-slate-400 text-[10px]">ART. 4 ABS. 1</span>
                   </div>
                   <div className="mt-2.5 space-y-1.5 text-[11px]">
-                    <div className="flex items-center gap-1.5 text-slate-200">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
+                    <div className="flex items-center gap-2 text-slate-200">
+                      <CheckCircle className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                       <span>{lang === 'de' ? 'Gesetzliche Schulungspflicht: Erfüllt' : 'Statutory Training Duty: Fulfilled'}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-slate-200">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
+                    <div className="flex items-center gap-2 text-slate-200">
+                      <CheckCircle className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                       <span>{lang === 'de' ? 'Audit-Dokumentation für Prüfer' : 'Full audit documentation ready'}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-slate-200">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
+                    <div className="flex items-center gap-2 text-slate-200">
+                      <CheckCircle className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                       <span>{lang === 'de' ? 'Haftungsschutz für GF & IT-Leitung' : 'Liability protection for leadership'}</span>
                     </div>
                   </div>

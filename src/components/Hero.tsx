@@ -39,7 +39,7 @@ export const Hero: React.FC<HeroProps> = ({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Slogan & Kicker Metadata */}
         <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#14B8A6]/30 bg-[#14B8A6]/10 text-xs font-mono font-semibold text-[#14B8A6] shadow-sm">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-xs font-mono font-semibold text-teal-300 shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-[#14B8A6]" />
             <span>Boost your processes, save license costs</span>
           </div>

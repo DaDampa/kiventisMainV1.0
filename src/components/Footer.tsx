@@ -43,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({
 
             <div className="p-3 rounded-xl border border-white/[0.08] bg-white/[0.02] text-xs text-slate-300 max-w-sm space-y-1">
               <div className="font-semibold text-white flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
+                <ShieldCheck className="h-3.5 w-3.5 text-[#14B8A6] shrink-0" />
                 <span>{lang === 'de' ? '25 Jahre Business & ERP Consulting' : '25 Years Business & ERP Consulting'}</span>
               </div>
               <p className="text-[11px] text-slate-400 leading-snug">
