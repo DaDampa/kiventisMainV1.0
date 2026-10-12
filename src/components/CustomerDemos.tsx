@@ -105,7 +105,11 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                   }`}
                 >
                   <Layers className="h-4 w-4" />
-                  <span>FERTIGUNG & MASCHINENBAU</span>
+                  <span>
+                    {lang === 'de'
+                      ? 'FERTIGUNG & MASCHINENBAU'
+                      : 'MANUFACTURING & INDUSTRIAL ENGINEERING'}
+                  </span>
                 </div>
                 <span
                   className={`px-2.5 py-1 rounded font-mono text-[11px] font-bold border ${
@@ -133,7 +137,9 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                     isSepia ? 'text-[#7A6B5B]' : 'text-slate-400'
                   }`}
                 >
-                  Baukasten- & Stücklisten-Kalkulator für Arbeitsvorbereitung (AV)
+                  {lang === 'de'
+                    ? 'Baukasten- & Stücklisten-Kalkulator für Arbeitsvorbereitung (AV)'
+                    : 'Modular BOM & Cost Estimator for Production Planning'}
                 </div>
               </div>
 
@@ -155,7 +161,11 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                       isSepia ? 'text-[#0D9488]' : 'text-[#14B8A6]'
                     }`}
                   />
-                  <span>Praxisfall: Hofmann Präzisions-Systeme (140 MA)</span>
+                  <span>
+                    {lang === 'de'
+                      ? 'Praxisfall: Hofmann Präzisions-Systeme (140 MA)'
+                      : 'Real Client Case: Hofmann Precision Systems (140 FTE)'}
+                  </span>
                 </div>
                 <p
                   className={`leading-relaxed ${
@@ -172,7 +182,11 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                   }`}
                 >
                   <CheckCircle2 className="h-3.5 w-3.5" />
-                  <span>Messbare Ersparnis: 6,5 Stunden bei jeder Neu-Kalkulation</span>
+                  <span>
+                    {lang === 'de'
+                      ? 'Messbare Ersparnis: 6,5 Stunden bei jeder Neu-Kalkulation'
+                      : 'Measurable Savings: 6.5 hours saved on every new calculation'}
+                  </span>
                 </div>
               </div>
 
@@ -188,7 +202,11 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                       isSepia ? 'bg-[#0D9488]' : 'bg-[#14B8A6]'
                     }`}
                   />
-                  <span>Interaktiver Baugruppenbaum mit Unterpositionen & Normteilen</span>
+                  <span>
+                    {lang === 'de'
+                      ? 'Interaktiver Baugruppenbaum mit Unterpositionen & Normteilen'
+                      : 'Interactive assembly tree with sub-items & standard components'}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span
@@ -196,7 +214,11 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                       isSepia ? 'bg-[#0D9488]' : 'bg-[#14B8A6]'
                     }`}
                   />
-                  <span>Herstellkosten-Kalkulation (COGS) inkl. Gemeinkosten & Stundensätze</span>
+                  <span>
+                    {lang === 'de'
+                      ? 'Herstellkosten-Kalkulation (COGS) inkl. Gemeinkosten & Stundensätze'
+                      : 'Manufacturing Cost Calculation (COGS) incl. overhead & labor rates'}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span
@@ -204,7 +226,11 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                       isSepia ? 'bg-[#0D9488]' : 'bg-[#14B8A6]'
                     }`}
                   />
-                  <span>Live OData REST ERP-Payload-Generierung für SAP & Business Central</span>
+                  <span>
+                    {lang === 'de'
+                      ? 'Live OData REST ERP-Payload-Generierung für SAP & Business Central'
+                      : 'Live OData REST ERP payload generation for SAP & Dynamics 365'}
+                  </span>
                 </div>
               </div>
             </div>
@@ -220,7 +246,9 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                   isSepia ? 'text-[#7A6B5B]' : 'text-slate-400'
                 }`}
               >
-                Eigenständige Applikation mit MOK-Industriedaten
+                {lang === 'de'
+                  ? 'Eigenständige Applikation mit MOK-Industriedaten'
+                  : 'Standalone interactive app with realistic industry data'}
               </span>
 
               <button
@@ -231,7 +259,7 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                     : 'bg-[#14B8A6] hover:bg-[#0D9488] text-[#090D14] shadow-[#14B8A6]/20'
                 }`}
               >
-                <span>Vollbild-App öffnen</span>
+                <span>{lang === 'de' ? 'Vollbild-App öffnen' : 'Open Fullscreen App'}</span>
                 <ExternalLink className="h-4 w-4" />
               </button>
             </div>
@@ -256,7 +284,9 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                   }`}
                 >
                   <FileCheck2 className="h-4 w-4" />
-                  <span>EINKAUF & DISPOSITION</span>
+                  <span>
+                    {lang === 'de' ? 'EINKAUF & DISPOSITION' : 'PROCUREMENT & SUPPLY CHAIN'}
+                  </span>
                 </div>
                 <span
                   className={`px-2.5 py-1 rounded font-mono text-[11px] font-bold border ${
@@ -265,7 +295,7 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                       : 'bg-[#14B8A6]/10 text-[#14B8A6] border-[#14B8A6]/20'
                   }`}
                 >
-                  3-WEGE-ABGLEICH (SOLL/IST)
+                  {lang === 'de' ? '3-WEGE-ABGLEICH (SOLL/IST)' : '3-WAY MATCHING (ORDER / RECEIPT / INVOICE)'}
                 </span>
               </div>
 
@@ -277,14 +307,16 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                       : 'text-white group-hover:text-[#14B8A6]'
                   }`}
                 >
-                  ERP Rechnungsprüfer & Radar
+                  {lang === 'de' ? 'ERP Rechnungsprüfer & Radar' : 'ERP Invoice Auditor & Variance Radar'}
                 </h3>
                 <div
                   className={`text-xs font-mono mt-1 ${
                     isSepia ? 'text-[#7A6B5B]' : 'text-slate-400'
                   }`}
                 >
-                  Automatisierter Abgleich von Eingangsrechnungen gegen Bestellungen
+                  {lang === 'de'
+                    ? 'Automatisierter Abgleich von Eingangsrechnungen gegen Bestellungen'
+                    : 'Automated 3-way reconciliation of supplier invoices vs. purchase orders'}
                 </div>
               </div>
 
@@ -306,7 +338,11 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                       isSepia ? 'text-[#0D9488]' : 'text-[#14B8A6]'
                     }`}
                   />
-                  <span>Praxisfall: Schultheiss Komponenten (85 MA)</span>
+                  <span>
+                    {lang === 'de'
+                      ? 'Praxisfall: Schultheiss Komponenten (85 MA)'
+                      : 'Real Client Case: Schultheiss Components (85 FTE)'}
+                  </span>
                 </div>
                 <p
                   className={`leading-relaxed ${
@@ -323,7 +359,11 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                   }`}
                 >
                   <CheckCircle2 className="h-3.5 w-3.5" />
-                  <span>Erkennt unberechtigte Teuerungszuschläge & Mengenüberhänge</span>
+                  <span>
+                    {lang === 'de'
+                      ? 'Erkennt unberechtigte Teuerungszuschläge & Mengenüberhänge'
+                      : 'Detects price inflation surcharges & quantity discrepancies'}
+                  </span>
                 </div>
               </div>
 
@@ -339,7 +379,11 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                       isSepia ? 'bg-[#0D9488]' : 'bg-[#14B8A6]'
                     }`}
                   />
-                  <span>Posteingangs-Übersicht mit automatischer Ampelbewertung</span>
+                  <span>
+                    {lang === 'de'
+                      ? 'Posteingangs-Übersicht mit automatischer Ampelbewertung'
+                      : 'Inbox overview with automatic traffic-light risk rating'}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span
@@ -347,7 +391,11 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                       isSepia ? 'bg-[#0D9488]' : 'bg-[#14B8A6]'
                     }`}
                   />
-                  <span>3-Wege-Positionsprüfung (Bestellt vs. Geliefert vs. Berechnet)</span>
+                  <span>
+                    {lang === 'de'
+                      ? '3-Wege-Positionsprüfung (Bestellt vs. Geliefert vs. Berechnet)'
+                      : '3-way line item audit (Ordered vs. Delivered vs. Invoiced)'}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span
@@ -355,7 +403,11 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                       isSepia ? 'bg-[#0D9488]' : 'bg-[#14B8A6]'
                     }`}
                   />
-                  <span>1-Klick Freigabelauf nach SAP FI/CO & Belastungsanzeigen-Generator</span>
+                  <span>
+                    {lang === 'de'
+                      ? '1-Klick Freigabelauf nach SAP FI/CO & Belastungsanzeigen-Generator'
+                      : '1-click approval workflow to SAP FI/CO & debit memo generator'}
+                  </span>
                 </div>
               </div>
             </div>
@@ -371,7 +423,9 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                   isSepia ? 'text-[#7A6B5B]' : 'text-slate-400'
                 }`}
               >
-                Eigenständige Applikation mit MOK-Belegfällen
+                {lang === 'de'
+                  ? 'Eigenständige Applikation mit MOK-Belegfällen'
+                  : 'Standalone interactive app with sample ERP invoices'}
               </span>
 
               <button
@@ -382,7 +436,7 @@ export const CustomerDemos: React.FC<CustomerDemosProps> = ({
                     : 'bg-[#14B8A6] hover:bg-[#0D9488] text-[#090D14] shadow-[#14B8A6]/20'
                 }`}
               >
-                <span>Vollbild-App öffnen</span>
+                <span>{lang === 'de' ? 'Vollbild-App öffnen' : 'Open Fullscreen App'}</span>
                 <ExternalLink className="h-4 w-4" />
               </button>
             </div>

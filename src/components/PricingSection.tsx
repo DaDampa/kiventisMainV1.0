@@ -91,7 +91,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                   {/* Features List */}
                   <div className="mt-6">
                     <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold">
-                      INBEGRIFFENE LEISTUNGEN:
+                      {lang === 'de' ? 'INBEGRIFFENE LEISTUNGEN:' : 'INCLUDED DELIVERABLES:'}
                     </span>
                     <ul className="mt-3 space-y-2.5">
                       {pkg.features.map((feat, fIdx) => (

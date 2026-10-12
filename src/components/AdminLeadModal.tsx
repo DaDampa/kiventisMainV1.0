@@ -33,15 +33,19 @@ import {
   RefreshCw,
 } from 'lucide-react';
 
+import { Language } from '../types';
+
 interface AdminLeadModalProps {
   isOpen: boolean;
   onClose: () => void;
+  lang?: Language;
 }
 
 const REQUIRED_PIN = '9250';
 const AUTH_STORAGE_KEY = 'kiventis_admin_authenticated';
 
-export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose }) => {
+export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose, lang = 'de' }) => {
+  const isDe = lang === 'de';
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
     return sessionStorage.getItem(AUTH_STORAGE_KEY) === 'true';
   });
@@ -92,7 +96,7 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
       setPinError('');
       setLeads(getStoredLeads());
     } else {
-      setPinError('Ungültiger PIN-Code. Zugriff verweigert.');
+      setPinError(isDe ? 'Ungültiger PIN-Code. Zugriff verweigert.' : 'Invalid PIN code. Access denied.');
       setPinInput('');
     }
   };
@@ -108,7 +112,7 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
           sessionStorage.setItem(AUTH_STORAGE_KEY, 'true');
           setLeads(getStoredLeads());
         } else {
-          setPinError('Ungültiger PIN-Code. Zugriff verweigert.');
+          setPinError(isDe ? 'Ungültiger PIN-Code. Zugriff verweigert.' : 'Invalid PIN code. Access denied.');
           setTimeout(() => setPinInput(''), 400);
         }
       }
@@ -195,7 +199,7 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
           <button
             onClick={onClose}
             className="absolute right-4 top-4 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer"
-            aria-label="Schließen"
+            aria-label={isDe ? 'Schließen' : 'Close'}
           >
             <X className="h-5 w-5" />
           </button>
@@ -206,13 +210,15 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
             </div>
 
             <div className="text-xs font-mono font-semibold tracking-wider text-teal-400 uppercase">
-              Administrator-Sicherheit
+              {isDe ? 'Administrator-Sicherheit' : 'Admin Security Access'}
             </div>
             <h2 className="text-xl font-bold font-display text-white mt-1">
-              Geschützter Admin-Bereich
+              {isDe ? 'Geschützter Admin-Bereich' : 'Restricted Admin Area'}
             </h2>
             <p className="text-xs text-slate-400 mt-1 max-w-xs mx-auto">
-              Geben Sie den 4-stelligen Sicherheitscode ein, um Kundendaten, E-Mails und Termine einzusehen.
+              {isDe
+                ? 'Geben Sie den 4-stelligen Sicherheitscode ein, um Kundendaten, E-Mails und Termine einzusehen.'
+                : 'Enter the 4-digit security PIN to access customer inquiries, emails, and bookings.'}
             </p>
 
             {/* PIN Dots Display */}
@@ -249,7 +255,7 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
                 pattern="[0-9]*"
                 maxLength={4}
                 autoFocus
-                placeholder="PIN eingeben (z. B. 9250)"
+                placeholder={isDe ? 'PIN eingeben (z. B. 9250)' : 'Enter PIN (e.g. 9250)'}
                 value={pinInput}
                 onChange={(e) => {
                   const val = e.target.value.replace(/\D/g, '').slice(0, 4);
@@ -282,7 +288,7 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
                 onClick={() => setPinInput('')}
                 className="py-3 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.06] text-xs text-slate-400 font-mono transition-all cursor-pointer"
               >
-                Löschen
+                {isDe ? 'Löschen' : 'Clear'}
               </button>
               <button
                 type="button"
@@ -302,7 +308,9 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
             </div>
 
             <div className="text-[11px] text-slate-500 font-mono">
-              Sicherheitshinweis: Zugang ausschließlich für autorisierte KIVENTIS-Administratoren.
+              {isDe
+                ? 'Sicherheitshinweis: Zugang ausschließlich für autorisierte KIVENTIS-Administratoren.'
+                : 'Security Notice: Access restricted to authorized KIVENTIS administrators.'}
             </div>
           </div>
         </div>
@@ -321,16 +329,18 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
           <div>
             <div className="flex items-center gap-2 text-xs font-mono text-[#14B8A6] font-semibold">
               <ShieldCheck className="h-4 w-4" />
-              <span>INTERNER LEAD-MANAGER & KUNDENDATEN-ZENTRALE</span>
+              <span>{isDe ? 'INTERNER LEAD-MANAGER & KUNDENDATEN-ZENTRALE' : 'INTERNAL LEAD MANAGER & CLIENT HUB'}</span>
               <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded border border-emerald-500/30">
-                PIN-Autorisiert
+                {isDe ? 'PIN-Autorisiert' : 'PIN Authorized'}
               </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold font-display text-white mt-1">
-              Erfasste Kundenanfragen & Termine
+              {isDe ? 'Erfasste Kundenanfragen & Termine' : 'Captured Client Inquiries & Bookings'}
             </h2>
             <p className="text-xs text-slate-400 mt-0.5">
-              Alle Interessenten aus dem 38-Seiten-Praxisleitfaden und Erstgespräch-Buchungen.
+              {isDe
+                ? 'Alle Interessenten aus dem 38-Seiten-Praxisleitfaden und Erstgespräch-Buchungen.'
+                : 'All contacts from the 38-page Executive Guide and discovery call bookings.'}
             </p>
           </div>
 
@@ -348,26 +358,26 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
               <button
                 onClick={handleClearSampleData}
                 className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-300 text-xs font-semibold transition-colors cursor-pointer"
-                title="Löscht die beiden Demo-Mustereinträge und behält nur echte Anfragen"
+                title={isDe ? 'Löscht die beiden Demo-Mustereinträge und behält nur echte Anfragen' : 'Deletes sample demo leads and keeps real client inquiries'}
               >
                 <RefreshCw className="h-3.5 w-3.5" />
-                <span>Demodaten löschen</span>
+                <span>{isDe ? 'Demodaten löschen' : 'Delete sample data'}</span>
               </button>
             )}
 
             <button
               onClick={handleLogout}
               className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 hover:text-white text-xs font-medium transition-colors cursor-pointer"
-              title="Admin-Bereich sperren"
+              title={isDe ? 'Admin-Bereich sperren' : 'Lock admin area'}
             >
               <LogOut className="h-3.5 w-3.5 text-slate-400" />
-              <span>Sperren</span>
+              <span>{isDe ? 'Sperren' : 'Lock'}</span>
             </button>
 
             <button
               onClick={onClose}
               className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer"
-              aria-label="Schließen"
+              aria-label={isDe ? 'Schließen' : 'Close'}
             >
               <X className="h-5 w-5" />
             </button>
@@ -419,19 +429,19 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
         {/* Stats bar */}
         <div className="p-4 sm:p-6 bg-[#090D14] border-b border-white/[0.06] grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
           <div className="p-3 rounded-lg border border-white/10 bg-white/[0.02]">
-            <span className="text-slate-400 block text-[11px]">Gesamt Leads</span>
+            <span className="text-slate-400 block text-[11px]">{isDe ? 'Gesamt Leads' : 'Total Leads'}</span>
             <span className="text-xl font-bold text-white">{leads.length}</span>
           </div>
           <div className="p-3 rounded-lg border border-teal-500/20 bg-teal-500/5">
-            <span className="text-teal-400 block text-[11px]">Praxisleitfaden (38S)</span>
+            <span className="text-teal-400 block text-[11px]">{isDe ? 'Praxisleitfaden (38S)' : 'Executive Guide (38p)'}</span>
             <span className="text-xl font-bold text-teal-300">{guideCount}</span>
           </div>
           <div className="p-3 rounded-lg border border-blue-500/20 bg-blue-500/5">
-            <span className="text-blue-400 block text-[11px]">Erstgespräche</span>
+            <span className="text-blue-400 block text-[11px]">{isDe ? 'Erstgespräche' : 'Discovery Calls'}</span>
             <span className="text-xl font-bold text-blue-300">{bookingCount}</span>
           </div>
           <div className="p-3 rounded-lg border border-emerald-500/20 bg-emerald-500/5">
-            <span className="text-emerald-400 block text-[11px]">Private Ziel-E-Mail (Admin)</span>
+            <span className="text-emerald-400 block text-[11px]">{isDe ? 'Private Ziel-E-Mail (Admin)' : 'Admin Notification Email'}</span>
             <span className="text-xs font-semibold text-emerald-300 truncate block">auswander-hub@proton.me</span>
           </div>
         </div>
@@ -443,7 +453,7 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
               <Search className="h-3.5 w-3.5 absolute left-3 top-3 text-slate-500" />
               <input
                 type="text"
-                placeholder="Suche nach Name, E-Mail, Firma..."
+                placeholder={isDe ? 'Suche nach Name, E-Mail, Firma...' : 'Search by name, email, company...'}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-white/10 bg-[#090D14] text-white placeholder-slate-500 focus:outline-hidden focus:border-[#14B8A6]"
@@ -459,7 +469,7 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
                     : 'border-white/10 bg-white/[0.02] text-slate-400 hover:text-white'
                 }`}
               >
-                Alle ({leads.length})
+                {isDe ? `Alle (${leads.length})` : `All (${leads.length})`}
               </button>
               <button
                 onClick={() => setFilterType('guide_download')}
@@ -469,7 +479,7 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
                     : 'border-white/10 bg-white/[0.02] text-slate-400 hover:text-white'
                 }`}
               >
-                Leitfaden ({guideCount})
+                {isDe ? `Leitfaden (${guideCount})` : `Guide (${guideCount})`}
               </button>
               <button
                 onClick={() => setFilterType('discovery_booking')}
@@ -479,7 +489,7 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
                     : 'border-white/10 bg-white/[0.02] text-slate-400 hover:text-white'
                 }`}
               >
-                Termine ({bookingCount})
+                {isDe ? `Termine (${bookingCount})` : `Bookings (${bookingCount})`}
               </button>
             </div>
           </div>
@@ -489,10 +499,10 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
               <a
                 href={createOwnerNotificationMailto(leads[0])}
                 className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-teal-300 transition-colors"
-                title="Öffnet Ihren E-Mail-Client mit den Daten des letzten Leads an auswander-hub@proton.me"
+                title={isDe ? 'Öffnet Ihren E-Mail-Client mit den Daten des letzten Leads an auswander-hub@proton.me' : 'Opens your email client with latest lead data'}
               >
                 <Send className="h-3.5 w-3.5" />
-                <span>Letzten Lead per Mail öffnen</span>
+                <span>{isDe ? 'Letzten Lead per Mail öffnen' : 'Open latest lead in email'}</span>
               </a>
             )}
 
@@ -501,9 +511,9 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose 
                 type="button"
                 onClick={() => setShowClearAllConfirm(true)}
                 className="text-xs text-slate-400 hover:text-red-400 transition-colors cursor-pointer"
-                title="Gesamte Liste leeren"
+                title={isDe ? 'Gesamte Liste leeren' : 'Clear entire list'}
               >
-                Liste leeren
+                {isDe ? 'Liste leeren' : 'Clear list'}
               </button>
             )}
           </div>

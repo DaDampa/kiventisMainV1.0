@@ -42,7 +42,7 @@ export const ImpressumModal: React.FC<ImpressumModalProps> = ({
           <button
             onClick={onClose}
             className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.06] transition-colors cursor-pointer"
-            aria-label="Schließen"
+            aria-label={isDe ? 'Schließen' : 'Close'}
           >
             <X className="h-5 w-5" />
           </button>
@@ -54,7 +54,7 @@ export const ImpressumModal: React.FC<ImpressumModalProps> = ({
           <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 space-y-3">
             <h4 className="text-sm font-semibold text-white flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-[#14B8A6]" />
-              <span>Diensteanbieter / Betreiber</span>
+              <span>{isDe ? 'Diensteanbieter / Betreiber' : 'Service Provider / Operator'}</span>
             </h4>
             <div className="text-slate-200 font-mono text-xs space-y-1">
               <div className="text-white font-bold text-sm">ERP and Marketing Solutions LLC</div>
@@ -68,16 +68,16 @@ export const ImpressumModal: React.FC<ImpressumModalProps> = ({
           <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 space-y-3">
             <h4 className="text-sm font-semibold text-white flex items-center gap-2">
               <Mail className="h-4 w-4 text-[#14B8A6]" />
-              <span>Kontakt</span>
+              <span>{isDe ? 'Kontakt' : 'Contact Information'}</span>
             </h4>
             <div className="space-y-1.5 font-mono text-xs">
               <div className="flex items-center gap-2">
-                <span className="text-slate-400">E-Mail:</span>
+                <span className="text-slate-400">{isDe ? 'E-Mail:' : 'Email:'}</span>
                 <a
-                  href="mailto:Kontakt@kiventis.com"
+                  href={isDe ? 'mailto:Kontakt@kiventis.com' : 'mailto:contact@kiventis.com'}
                   className="text-[#14B8A6] hover:underline"
                 >
-                  Kontakt@kiventis.com
+                  {isDe ? 'Kontakt@kiventis.com' : 'contact@kiventis.com'}
                 </a>
               </div>
               <div className="flex items-center gap-2">

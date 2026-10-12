@@ -115,7 +115,9 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang }) => {
                       {faq.citationHint && (
                         <div className="mt-4 flex items-center gap-2 text-xs font-mono text-[#14B8A6]/90 bg-[#14B8A6]/[0.06] p-2.5 rounded-lg border border-[#14B8A6]/20">
                           <BookMarked className="h-3.5 w-3.5 shrink-0" />
-                          <span>GEO / Rechtsbezug: {faq.citationHint}</span>
+                          <span>
+                            {lang === 'de' ? 'GEO / Rechtsbezug:' : 'Regulatory Citation / Reference:'} {faq.citationHint}
+                          </span>
                         </div>
                       )}
                     </div>

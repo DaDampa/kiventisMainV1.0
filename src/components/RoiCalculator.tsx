@@ -69,9 +69,9 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({
                 className="w-full h-2.5 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#14B8A6]/40 transition-all"
               />
               <div className="flex justify-between text-xs text-slate-300 font-mono font-medium mt-1.5 px-0.5">
-                <span>3 MA</span>
-                <span>40 MA</span>
-                <span>80 MA</span>
+                <span>{lang === 'de' ? '3 MA' : '3 FTE'}</span>
+                <span>{lang === 'de' ? '40 MA' : '40 FTE'}</span>
+                <span>{lang === 'de' ? '80 MA' : '80 FTE'}</span>
               </div>
             </div>
 
@@ -119,10 +119,12 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({
                 className="w-full h-2.5 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#14B8A6]/40 transition-all"
               />
               <div className="flex justify-between text-xs text-slate-300 font-mono font-medium mt-1.5 px-0.5">
-                <span>1 Std.</span>
-                <span>2 Std.</span>
-                <span className="text-teal-400 font-bold">4,5 Std. (Ø KMU)</span>
-                <span>8 Std.</span>
+                <span>{lang === 'de' ? '1 Std.' : '1 hr'}</span>
+                <span>{lang === 'de' ? '2 Std.' : '2 hrs'}</span>
+                <span className="text-teal-400 font-bold">
+                  {lang === 'de' ? '4,5 Std. (Ø KMU)' : '4.5 hrs (Avg SME)'}
+                </span>
+                <span>{lang === 'de' ? '8 Std.' : '8 hrs'}</span>
               </div>
             </div>
 
@@ -147,12 +149,12 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({
                   {t.yearlySavings}
                 </span>
                 <div className="mt-1 font-mono tabular-nums text-4xl sm:text-5xl font-extrabold text-white">
-                  {yearlyGrossSavings.toLocaleString('de-DE')} €
+                  {yearlyGrossSavings.toLocaleString(lang === 'de' ? 'de-DE' : 'en-US')} €
                 </div>
                 <div className="mt-2 text-xs text-emerald-400 font-semibold flex items-center gap-1.5">
                   <CheckCircle2 className="h-4 w-4" />
                   <span>
-                    {totalHoursSavedPerYear.toLocaleString('de-DE')} {t.hoursPerYear}
+                    {totalHoursSavedPerYear.toLocaleString(lang === 'de' ? 'de-DE' : 'en-US')} {t.hoursPerYear}
                   </span>
                 </div>
               </div>

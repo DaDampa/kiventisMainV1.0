@@ -37,10 +37,16 @@ export const Hero: React.FC<HeroProps> = ({
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Unboxed Kicker Metadata (Zero-pill discipline: quiet unboxed text) */}
-        <div className="flex items-center gap-2 text-xs font-semibold tracking-wider text-[#14B8A6] mb-4">
-          <ShieldCheck className="h-4 w-4 shrink-0 text-[#14B8A6]" />
-          <span>{t.kicker}</span>
+        {/* Slogan & Kicker Metadata */}
+        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-4">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#14B8A6]/30 bg-[#14B8A6]/10 text-xs font-mono font-semibold text-[#14B8A6] shadow-sm">
+            <Sparkles className="h-3.5 w-3.5 text-[#14B8A6]" />
+            <span>Boost your processes, save license costs</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-xs font-mono text-slate-400">
+            <ShieldCheck className="h-3.5 w-3.5 text-[#14B8A6]" />
+            <span>{t.kicker}</span>
+          </div>
         </div>
 
         {/* 5-Second Rule Headline */}
@@ -93,7 +99,11 @@ export const Hero: React.FC<HeroProps> = ({
             <div>
               <div className="flex items-center gap-2 text-xs font-mono text-[#14B8A6]">
                 <Sparkles className="h-3.5 w-3.5" />
-                <span>PRAXIS-BEISPIEL · LIVE ARCHITEKTUR</span>
+                <span>
+                  {lang === 'de'
+                    ? 'PRAXIS-BEISPIEL · LIVE ARCHITEKTUR'
+                    : 'LIVE ARCHITECTURE · REAL-WORLD EXAMPLE'}
+                </span>
               </div>
               <h3 className="text-xl font-bold text-white mt-1">
                 {t.interactivePreview.title}
@@ -104,7 +114,11 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
             <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
               <Lock className="h-3.5 w-3.5 text-emerald-400" />
-              <span>Zero-Data-Retention · 100% DSGVO</span>
+              <span>
+                {lang === 'de'
+                  ? 'Zero-Data-Retention · 100% DSGVO'
+                  : 'Zero-Data-Retention · 100% GDPR Compliant'}
+              </span>
             </div>
           </div>
 
@@ -140,12 +154,14 @@ export const Hero: React.FC<HeroProps> = ({
                   <div className="mt-4 pt-3 border-t border-white/[0.06] flex items-center justify-between text-[11px] text-slate-400">
                     <span className="font-mono">
                       {index === 0 && 'Format: PDF/CAD/ERP'}
-                      {index === 1 && 'Vektor-Embeddings (Lokal)'}
+                      {index === 1 && (lang === 'de' ? 'Vektor-Embeddings (Lokal)' : 'Vector Embeddings (Local)')}
                       {index === 2 && 'Vibe Coding via Cursor'}
-                      {index === 3 && 'Ø -87% Bearbeitungszeit'}
+                      {index === 3 && (lang === 'de' ? 'Ø -87% Bearbeitungszeit' : 'Avg -87% Cycle Time')}
                     </span>
                     {isActive && (
-                      <span className="text-[#14B8A6] font-medium">Aktiv</span>
+                      <span className="text-[#14B8A6] font-medium">
+                        {lang === 'de' ? 'Aktiv' : 'Active'}
+                      </span>
                     )}
                   </div>
                 </div>

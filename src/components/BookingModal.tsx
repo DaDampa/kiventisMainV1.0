@@ -103,7 +103,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     }
 
     const matchedTopic = t.topics.find((tp) => tp.id === selectedTopic);
-    const topicLabel = matchedTopic ? matchedTopic.label : 'Allgemeine B2B KI-Beratung';
+    const topicLabel = matchedTopic
+      ? matchedTopic.label
+      : lang === 'de'
+      ? 'Allgemeine B2B KI-Beratung'
+      : 'General B2B AI Advisory';
 
     // Save lead to persistent storage and trigger background dispatch
     saveNewLead({
@@ -146,7 +150,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         <button
           onClick={onClose}
           className="absolute right-5 top-5 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.05] transition-colors"
-          aria-label="Schließen"
+          aria-label={lang === 'de' ? 'Schließen' : 'Close'}
         >
           <X className="h-5 w-5" />
         </button>
@@ -156,7 +160,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             {/* Modal Header */}
             <div>
               <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#14B8A6]">
-                30-MIN. ERSTGESPRÄCH · VIRTUELLE ERSTBERATUNG
+                {lang === 'de'
+                  ? '30-MIN. ERSTGESPRÄCH · VIRTUELLE ERSTBERATUNG'
+                  : '30-MIN. DISCOVERY CALL · VIRTUAL CONSULTATION'}
               </span>
               <h3 className="mt-1 text-2xl font-bold font-display text-white">
                 {t.title}
@@ -299,7 +305,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       <span>{lang === 'de' ? 'Verfügbare Terminfenster' : 'Available Time Slots'}</span>
                     </label>
                     <span className="text-[11px] font-mono text-[#14B8A6] bg-[#14B8A6]/10 px-2 py-0.5 rounded border border-[#14B8A6]/20">
-                      Dynamisch berechnet
+                      {lang === 'de' ? 'Dynamisch berechnet' : 'Live Calculated'}
                     </span>
                   </div>
 

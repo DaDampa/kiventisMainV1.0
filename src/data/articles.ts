@@ -225,7 +225,7 @@ export const articlesEn: InsightArticle[] = [
           'The roadmap comprises four key stages: Prohibited practices (Article 5) and the binding mandate for personnel AI literacy (Article 4) took effect on February 2, 2025. Rules for General-Purpose AI (GPAI) take effect on August 2, 2025. Full compliance for High-Risk AI systems under Annex III takes effect in August 2026.',
         ],
         callout:
-          'Critical for leadership: Article 4 makes no distinction between Fortune 500 corporations and 40-person Mittelstand suppliers. If your employees utilize AI copilots or generative models, you must prove they are trained.',
+          'Critical for leadership: Article 4 makes no distinction between Fortune 500 corporations and 40-person mid-sized suppliers. If your employees utilize AI copilots or generative models, you must prove they are trained.',
       },
       {
         heading: '2. Article 4: The Overlooked AI Literacy Requirement',
@@ -258,7 +258,7 @@ export const articlesEn: InsightArticle[] = [
     kicker: 'PRODUCTIVITY REVOLUTION 2026',
     title: 'Vibe Coding in the Enterprise: How Domain Experts Build Internal Tools in 48 Hours',
     excerpt:
-      'Andrej Karpathy’s paradigm of "Vibe Coding" is reshaping the Mittelstand: Non-technical domain teams engineer tailored web applications and automated workflows using natural language – without paying €50k to software agencies.',
+      'Andrej Karpathy’s paradigm of "Vibe Coding" is reshaping mid-market enterprises: Non-technical domain teams engineer tailored web applications and automated workflows using natural language – without paying €50k to software agencies.',
     readTime: '5 min read',
     publishedDate: 'September 2026',
     author: {
@@ -305,7 +305,7 @@ export const articlesEn: InsightArticle[] = [
     kicker: 'ENTERPRISE SYSTEM ARCHITECTURE',
     title: 'Connecting ERP Systems Without €50k Project Budgets: SAP & Business Central AI Pipelines',
     excerpt:
-      'Why traditional ERP interface projects cost fortunes in consultant fees, and how modern Mittelstand companies connect core business systems cleanly via OData, REST, and Vibe Coding.',
+      'Why traditional ERP interface projects cost fortunes in consultant fees, and how modern mid-sized companies connect core business systems cleanly via OData, REST, and Vibe Coding.',
     readTime: '7 min read',
     publishedDate: 'August 2026',
     author: {
@@ -358,7 +358,7 @@ export const articlesEn: InsightArticle[] = [
       role: 'B2B Business & Tech Analysts',
     },
     tags: ['SaaS Diet', 'License Costs', 'ROI Analysis', 'Independence'],
-    citation: 'Gartner & Kiventis Market Benchmark 2026: The Rise of Citizen-Engineered Internal Micro-Apps in Mittelstand',
+    citation: 'Gartner & Kiventis Market Benchmark 2026: The Rise of Citizen-Engineered Internal Micro-Apps in Mid-Market Enterprises',
     keyTakeaways: [
       'A typical 50-person firm pays for 15 to 25 separate cloud subscriptions – utilizing less than 15% of their feature set.',
       'Cloud SaaS prices increase by 8–15% annually, compounded by vendor lock-in.',

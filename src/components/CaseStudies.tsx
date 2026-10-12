@@ -76,7 +76,7 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({
             <div className="lg:col-span-7 space-y-6">
               <div>
                 <span className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
-                  DIE AUSGANGSLAGE (CHALLENGE):
+                  {lang === 'de' ? 'DIE AUSGANGSLAGE (CHALLENGE):' : 'THE INITIAL CHALLENGE:'}
                 </span>
                 <p className="mt-2 text-sm sm:text-base text-slate-300 leading-relaxed">
                   {activeCase.challenge}
@@ -118,7 +118,7 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({
               <div>
                 <div className="flex items-center justify-between pb-4 border-b border-white/[0.06]">
                   <span className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                    GEMESSENE KENNZAHLEN (KPIS)
+                    {lang === 'de' ? 'GEMESSENE KENNZAHLEN (KPIS)' : 'VERIFIED PERFORMANCE METRICS (KPIS)'}
                   </span>
                   <TrendingUp className="h-4 w-4 text-emerald-400" />
                 </div>
@@ -134,13 +134,13 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({
                       </div>
                       <div className="mt-2 flex items-center justify-between">
                         <div className="text-xs text-slate-400">
-                          Vorher:{' '}
+                          {lang === 'de' ? 'Vorher:' : 'Before:'}{' '}
                           <span className="font-mono tabular-nums text-slate-400 line-through">
                             {kpi.before}
                           </span>
                         </div>
                         <div className="font-mono tabular-nums text-base font-bold text-white">
-                          Nachher: {kpi.after}
+                          {lang === 'de' ? 'Nachher:' : 'After:'} {kpi.after}
                         </div>
                         <div className="font-mono tabular-nums text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                           {kpi.improvement}

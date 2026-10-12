@@ -279,7 +279,7 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
             </span>
             <span className="hidden sm:inline text-slate-500">|</span>
             <h1 className="hidden sm:block text-xs sm:text-sm font-semibold text-slate-200 truncate max-w-md">
-              {kmuLeitfadenDe.title} (38 Seiten)
+              {kmuLeitfadenDe.title} ({lang === 'de' ? '38 Seiten' : '38 Pages'})
             </h1>
           </div>
 
@@ -287,15 +287,17 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
             <button
               onClick={handlePrint}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/[0.04] text-xs text-slate-300 hover:text-white hover:bg-white/[0.08] transition-colors"
-              title="Drucken / Als PDF speichern"
+              title={lang === 'de' ? 'Drucken / Als PDF speichern' : 'Print / Save as PDF'}
             >
               <Printer className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">Drucken / PDF</span>
+              <span className="hidden sm:inline">
+                {lang === 'de' ? 'Drucken / PDF' : 'Print / PDF'}
+              </span>
             </button>
             <button
               onClick={handleDownloadFullText}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/[0.04] text-xs text-slate-300 hover:text-white hover:bg-white/[0.08] transition-colors"
-              title="Text exportieren"
+              title={lang === 'de' ? 'Text exportieren' : 'Export text'}
             >
               <Download className="h-3.5 w-3.5" />
               <span className="hidden sm:inline">Download (.txt)</span>
@@ -303,7 +305,7 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
             <button
               onClick={() => setReaderOpen(false)}
               className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.08] transition-colors"
-              aria-label="Reader schließen"
+              aria-label={lang === 'de' ? 'Reader schließen' : 'Close reader'}
             >
               <X className="h-5 w-5" />
             </button>
@@ -315,8 +317,12 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
           {/* Chapter Navigation Sidebar */}
           <aside className="w-80 sm:w-88 border-r border-white/[0.08] bg-[#0A0F1D] hidden md:flex flex-col overflow-y-auto">
             <div className="p-4 border-b border-white/[0.06] flex items-center justify-between text-xs font-mono text-slate-400">
-              <span>INHALTSÜBERSICHT (38 SEITEN)</span>
-              <span className="text-[#14B8A6]">{allLeitfadenChapters.length} Kapitel</span>
+              <span>
+                {lang === 'de' ? 'INHALTSÜBERSICHT (38 SEITEN)' : 'TABLE OF CONTENTS (38 PAGES)'}
+              </span>
+              <span className="text-[#14B8A6]">
+                {allLeitfadenChapters.length} {lang === 'de' ? 'Kapitel' : 'Chapters'}
+              </span>
             </div>
             <nav className="p-3 space-y-4">
               {kmuLeitfadenDe.parts.map((part) => (
@@ -350,8 +356,10 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
               ))}
             </nav>
             <div className="mt-auto p-4 border-t border-white/[0.06] text-[11px] text-slate-500">
-              Double-Opt-In autorisiert für:
-              <div className="text-emerald-400 font-mono truncate">{email || 'Geschäftskontakt'}</div>
+              {lang === 'de' ? 'Double-Opt-In autorisiert für:' : 'Double opt-in verified for:'}
+              <div className="text-emerald-400 font-mono truncate">
+                {email || (lang === 'de' ? 'Geschäftskontakt' : 'Business Contact')}
+              </div>
             </div>
           </aside>
 
@@ -366,14 +374,14 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
                   onClick={() => setActiveChapterIndex((i) => Math.max(0, i - 1))}
                   className="px-2 py-1 bg-white/[0.05] rounded disabled:opacity-30"
                 >
-                  Zurück
+                  {lang === 'de' ? 'Zurück' : 'Previous'}
                 </button>
                 <button
                   disabled={activeChapterIndex === allLeitfadenChapters.length - 1}
                   onClick={() => setActiveChapterIndex((i) => Math.min(allLeitfadenChapters.length - 1, i + 1))}
                   className="px-2 py-1 bg-white/[0.05] rounded disabled:opacity-30"
                 >
-                  Weiter
+                  {lang === 'de' ? 'Weiter' : 'Next'}
                 </button>
               </div>
             </div>
@@ -403,7 +411,9 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
               <div className="mt-8 p-5 rounded-xl border border-teal-500/20 bg-teal-500/[0.04]">
                 <h4 className="text-xs font-mono font-bold text-teal-300 uppercase tracking-wider mb-3 flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-teal-400" />
-                  <span>Praxis-Checkliste für Führungskräfte</span>
+                  <span>
+                    {lang === 'de' ? 'Praxis-Checkliste für Führungskräfte' : 'Executive Action Checklist'}
+                  </span>
                 </h4>
                 <ul className="space-y-2">
                   {curChapter.checklist.map((item, i) => (
@@ -474,7 +484,7 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
                   onClick={() => setReaderOpen(false)}
                   className="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 hover:text-emerald-300 ml-auto"
                 >
-                  <span>Zurück zur Übersicht</span>
+                  <span>{lang === 'de' ? 'Zurück zur Übersicht' : 'Back to Overview'}</span>
                   <Check className="h-4 w-4" />
                 </button>
               )}
@@ -494,7 +504,7 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
         <button
           onClick={handleClose}
           className="absolute right-5 top-5 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.05] transition-colors"
-          aria-label="Schließen"
+          aria-label={lang === 'de' ? 'Schließen' : 'Close'}
         >
           <X className="h-5 w-5" />
         </button>
@@ -506,14 +516,20 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
           <div>
             <div className="flex items-center gap-2 text-xs font-mono font-semibold text-[#14B8A6]">
               <BookOpen className="h-4 w-4 shrink-0" />
-              <span>B2B KMU-PRAXISLEITFADEN · 38 SEITEN ARCHITEKTUR</span>
+              <span>
+                {lang === 'de'
+                  ? 'B2B KMU-PRAXISLEITFADEN · 38 SEITEN ARCHITEKTUR'
+                  : 'B2B SME EXECUTIVE GUIDE · 38-PAGE ARCHITECTURE'}
+              </span>
             </div>
 
             <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-white">
               {t.title}
             </h3>
             <p className="mt-1 text-xs text-slate-300 leading-relaxed">
-              Vollständiges 38-seitiges Kompendium: EU AI Act Art. 4 & Art. 50 Stufenplan, Vibe Coding ohne Schatten-IT, 8 B2B-Use-Cases, ROI-Kalkulation und Muster-Betriebsvereinbarung.
+              {lang === 'de'
+                ? 'Vollständiges 38-seitiges Kompendium: EU AI Act Art. 4 & Art. 50 Stufenplan, Vibe Coding ohne Schatten-IT, 8 B2B-Use-Cases, ROI-Kalkulation und Muster-Betriebsvereinbarung.'
+                : 'Comprehensive 38-page compendium: EU AI Act Art. 4 & 50 compliance roadmap, secure Vibe Coding, 8 B2B enterprise use cases, ROI models & governance agreements.'}
             </p>
 
             {error && (
@@ -544,7 +560,7 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
                 <input
                   type="email"
                   required
-                  placeholder="name@unternehmen.de"
+                  placeholder={lang === 'de' ? 'name@unternehmen.de' : 'name@company.com'}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full rounded-lg border border-white/10 bg-[#090D14] px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:border-[#14B8A6] focus:outline-hidden"
@@ -597,7 +613,11 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
 
               <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-500">
                 <Lock className="h-3 w-3 text-slate-400" />
-                <span>Geschützt durch EU AI Act & DSGVO-konforme Double-Opt-In-Verifizierung.</span>
+                <span>
+                  {lang === 'de'
+                    ? 'Geschützt durch EU AI Act & DSGVO-konforme Double-Opt-In-Verifizierung.'
+                    : 'Protected by EU AI Act & GDPR-compliant double opt-in verification.'}
+                </span>
               </div>
             </form>
           </div>
@@ -610,7 +630,11 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
           <div>
             <div className="flex items-center gap-2 text-xs font-mono font-semibold text-amber-400">
               <ShieldCheck className="h-4 w-4" />
-              <span>SCHRITT 2 VON 2: E-MAIL-BESTÄTIGUNG ERFORDERLICH</span>
+              <span>
+                {lang === 'de'
+                  ? 'SCHRITT 2 VON 2: E-MAIL-BESTÄTIGUNG ERFORDERLICH'
+                  : 'STEP 2 OF 2: EMAIL CONFIRMATION REQUIRED'}
+              </span>
             </div>
 
             <h3 className="mt-2 text-xl font-bold font-display text-white">
@@ -635,7 +659,7 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
                 onClick={() => setStep('form')}
                 className="text-[11px] text-slate-400 hover:text-white underline ml-2 shrink-0"
               >
-                Ändern
+                {lang === 'de' ? 'Ändern' : 'Change'}
               </button>
             </div>
 
@@ -644,23 +668,28 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
               <div className="flex items-center justify-between text-[11px] font-mono border-b border-white/[0.08] pb-2 text-slate-400">
                 <span className="flex items-center gap-1.5 text-teal-400">
                   <Mail className="h-3.5 w-3.5" />
-                  E-Mail Posteingang (Simulation)
+                  {lang === 'de' ? 'E-Mail Posteingang (Simulation)' : 'Email Inbox (Simulation)'}
                 </span>
-                <span>Gerade eben</span>
+                <span>{lang === 'de' ? 'Gerade eben' : 'Just now'}</span>
               </div>
 
               <div className="text-xs space-y-1">
                 <div className="text-slate-400">
-                  <strong className="text-slate-200">Absender:</strong> KIVENTIS B2B &lt;verify@kiventis.com&gt;
+                  <strong className="text-slate-200">{lang === 'de' ? 'Absender:' : 'From:'}</strong> KIVENTIS B2B &lt;verify@kiventis.com&gt;
                 </div>
                 <div className="text-slate-400">
-                  <strong className="text-slate-200">Betreff:</strong> Bitte bestätigen Sie Ihre E-Mail für den KMU-Praxisleitfaden
+                  <strong className="text-slate-200">{lang === 'de' ? 'Betreff:' : 'Subject:'}</strong>{' '}
+                  {lang === 'de'
+                    ? 'Bitte bestätigen Sie Ihre E-Mail für den KMU-Praxisleitfaden'
+                    : 'Please verify your email for the SME Executive Guide'}
                 </div>
               </div>
 
               <div className="p-3 rounded-lg bg-teal-500/[0.08] border border-teal-500/20 text-xs text-slate-300 space-y-2">
                 <p>
-                  Hallo {name || 'Interessent'}, bitte bestätigen Sie Ihre E-Mail-Adresse, um den sofortigen Download des 38-seitigen KMU-Praxisleitfadens freizuschalten.
+                  {lang === 'de'
+                    ? `Hallo ${name || 'Interessent'}, bitte bestätigen Sie Ihre E-Mail-Adresse, um den sofortigen Download des 38-seitigen KMU-Praxisleitfadens freizuschalten.`
+                    : `Hello ${name || 'Colleague'}, please confirm your email address to unlock immediate access to the 38-page SME Executive Guide.`}
                 </p>
 
                 {/* Primary 1-Click Verification Link inside simulated email */}
@@ -670,7 +699,11 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
                     className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-[#090D14] font-bold text-xs px-4 py-2.5 transition-colors cursor-pointer shadow-md"
                   >
                     <CheckCircle2 className="h-4 w-4" />
-                    <span>E-Mail-Adresse jetzt bestätigen & Leitfaden freischalten</span>
+                    <span>
+                      {lang === 'de'
+                        ? 'E-Mail-Adresse jetzt bestätigen & Leitfaden freischalten'
+                        : 'Confirm Email Address & Unlock Guide'}
+                    </span>
                   </button>
                 </div>
               </div>
@@ -679,12 +712,14 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
             {/* Alternative: 6-digit verification code input */}
             <div className="mt-4 pt-4 border-t border-white/[0.08]">
               <div className="text-xs text-slate-400 mb-2 font-medium">
-                Oder Bestätigungscode aus der E-Mail manuell eingeben:
+                {lang === 'de'
+                  ? 'Oder Bestätigungscode aus der E-Mail manuell eingeben:'
+                  : 'Or enter the verification PIN from your email manually:'}
               </div>
               <form onSubmit={handleCodeSubmit} className="flex gap-2">
                 <input
                   type="text"
-                  placeholder={`Code: ${verificationCode}`}
+                  placeholder={lang === 'de' ? `Code: ${verificationCode}` : `PIN: ${verificationCode}`}
                   value={inputCode}
                   onChange={(e) => setInputCode(e.target.value)}
                   className="flex-1 rounded-lg border border-white/10 bg-[#090D14] px-3 py-2 text-xs font-mono tracking-widest text-center text-white placeholder-slate-600 focus:border-[#14B8A6] focus:outline-hidden"
@@ -693,7 +728,7 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
                   type="submit"
                   className="rounded-lg bg-white/[0.08] hover:bg-white/[0.15] text-white text-xs font-semibold px-4 py-2 transition-colors cursor-pointer shrink-0"
                 >
-                  Bestätigen
+                  {lang === 'de' ? 'Bestätigen' : 'Verify'}
                 </button>
               </form>
 
@@ -708,10 +743,12 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
                   className="inline-flex items-center gap-1 hover:text-white transition-colors"
                 >
                   <RefreshCw className="h-3 w-3" />
-                  <span>Code erneut senden</span>
+                  <span>{lang === 'de' ? 'Code erneut senden' : 'Resend PIN'}</span>
                 </button>
                 {resendNotice && (
-                  <span className="text-emerald-400 font-mono">Neuer Code generiert!</span>
+                  <span className="text-emerald-400 font-mono">
+                    {lang === 'de' ? 'Neuer Code generiert!' : 'New PIN generated!'}
+                  </span>
                 )}
               </div>
             </div>
@@ -730,27 +767,43 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
 
             <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono text-emerald-300">
               <ShieldCheck className="h-3.5 w-3.5" />
-              <span>E-Mail-Adresse erfolgreich verifiziert (Double-Opt-In erteilt)</span>
+              <span>
+                {lang === 'de'
+                  ? 'E-Mail-Adresse erfolgreich verifiziert (Double-Opt-In erteilt)'
+                  : 'Email address successfully verified (Double opt-in granted)'}
+              </span>
             </div>
 
             <h3 className="mt-3 text-xl sm:text-2xl font-bold font-display text-white">
-              Ihr 38-seitiger Praxisleitfaden ist freigeschaltet!
+              {lang === 'de'
+                ? 'Ihr 38-seitiger Praxisleitfaden ist freigeschaltet!'
+                : 'Your 38-Page Enterprise Guide is Unlocked!'}
             </h3>
             <p className="mt-1 text-xs text-slate-300 max-w-md mx-auto">
-              Vielen Dank für Ihre Verifizierung. Sie haben ab sofort Zugriff auf alle 5 Teile, 8 B2B-Use-Cases, Checklisten & Vorlagen.
+              {lang === 'de'
+                ? 'Vielen Dank für Ihre Verifizierung. Sie haben ab sofort Zugriff auf alle 5 Teile, 8 B2B-Use-Cases, Checklisten & Vorlagen.'
+                : 'Thank you for verifying. You now have immediate access to all 5 sections, 8 enterprise use cases, checklists & templates.'}
             </p>
 
             {/* Document summary box */}
             <div className="mt-5 p-4 rounded-xl border border-white/[0.08] bg-[#090D14] text-left text-xs space-y-2">
               <div className="flex items-center justify-between text-slate-400 font-mono text-[11px] border-b border-white/[0.06] pb-2">
-                <span>DOKUMENT: KIVENTIS B2B PRAXISLEITFADEN</span>
-                <span className="text-emerald-400">38 SEITEN VOLLVERSION</span>
+                <span>
+                  {lang === 'de' ? 'DOKUMENT: KIVENTIS B2B PRAXISLEITFADEN' : 'DOCUMENT: KIVENTIS B2B EXECUTIVE GUIDE'}
+                </span>
+                <span className="text-emerald-400">
+                  {lang === 'de' ? '38 SEITEN VOLLVERSION' : '38-PAGE FULL EDITION'}
+                </span>
               </div>
               <div className="text-white font-semibold">
-                Künstliche Intelligenz, Vibe Coding & EU-AI-Act-Compliance (2025/2026)
+                {lang === 'de'
+                  ? 'Künstliche Intelligenz, Vibe Coding & EU-AI-Act-Compliance (2025/2026)'
+                  : 'Enterprise AI, Vibe Coding & EU AI Act Governance (2025/2026)'}
               </div>
               <div className="text-slate-400 text-[11px] leading-relaxed">
-                Prolog (S. 1–2) · Teil I: Recht & Compliance (S. 3–8) · Teil II: Technologie & Vibe Coding (S. 9–14) · Teil III: 8 B2B-Use-Cases (S. 15–30) · Teil IV: ROI & Fördermittel (S. 31–34) · Teil V: Roadmap & Muster-Betriebsvereinbarung (S. 35–38).
+                {lang === 'de'
+                  ? 'Prolog (S. 1–2) · Teil I: Recht & Compliance (S. 3–8) · Teil II: Technologie & Vibe Coding (S. 9–14) · Teil III: 8 B2B-Use-Cases (S. 15–30) · Teil IV: ROI & Fördermittel (S. 31–34) · Teil V: Roadmap & Muster-Betriebsvereinbarung (S. 35–38).'
+                  : 'Prologue (p. 1–2) · Part I: Law & Governance (p. 3–8) · Part II: Tech & Vibe Coding (p. 9–14) · Part III: 8 Enterprise Use Cases (p. 15–30) · Part IV: ROI & Funding (p. 31–34) · Part V: Roadmap & Agreement Templates (p. 35–38).'}
               </div>
             </div>
 
@@ -761,7 +814,11 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
                 className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-[#090D14] text-xs sm:text-sm font-bold px-5 py-3 transition-colors cursor-pointer shadow-lg"
               >
                 <BookOpen className="h-4 w-4" />
-                <span>38-Seiten Leitfaden jetzt im interaktiven Reader öffnen</span>
+                <span>
+                  {lang === 'de'
+                    ? '38-Seiten Leitfaden jetzt im interaktiven Reader öffnen'
+                    : 'Open 38-Page Guide in Interactive Reader'}
+                </span>
               </button>
 
               <div className="grid grid-cols-2 gap-2">
@@ -770,7 +827,7 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
                   className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-white text-xs font-semibold px-3 py-2.5 transition-colors cursor-pointer"
                 >
                   <Printer className="h-3.5 w-3.5 text-teal-400" />
-                  <span>Drucken / Als PDF</span>
+                  <span>{lang === 'de' ? 'Drucken / Als PDF' : 'Print / Save as PDF'}</span>
                 </button>
 
                 <button
@@ -778,13 +835,17 @@ Kontakt: ${kmuLeitfadenDe.contactEmail}
                   className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-white text-xs font-semibold px-3 py-2.5 transition-colors cursor-pointer"
                 >
                   <Download className="h-3.5 w-3.5 text-teal-400" />
-                  <span>Volltext (.txt)</span>
+                  <span>{lang === 'de' ? 'Volltext (.txt)' : 'Full Text (.txt)'}</span>
                 </button>
               </div>
             </div>
 
             <p className="mt-4 text-[11px] text-slate-500">
-              Ein Bestätigungsbeleg wurde an <strong className="text-slate-400">{email}</strong> hinterlegt.
+              {lang === 'de' ? (
+                <>Ein Bestätigungsbeleg wurde an <strong className="text-slate-400">{email}</strong> hinterlegt.</>
+              ) : (
+                <>A verification record has been logged for <strong className="text-slate-400">{email}</strong>.</>
+              )}
             </p>
           </div>
         )}

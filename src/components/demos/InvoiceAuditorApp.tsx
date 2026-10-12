@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Theme } from '../../types';
+import { Theme, Language } from '../../types';
 import {
   FileCheck2,
   ArrowLeft,
@@ -134,7 +134,8 @@ const MOCK_INVOICES: InvoiceDoc[] = [
 export const InvoiceAuditorApp: React.FC<{
   theme?: Theme;
   onBack: () => void;
-}> = ({ theme = 'dark', onBack }) => {
+  lang?: Language;
+}> = ({ theme = 'dark', onBack, lang = 'de' }) => {
   const [invoices, setInvoices] = useState<InvoiceDoc[]>(MOCK_INVOICES);
   const [selectedId, setSelectedId] = useState<string>('inv-8845');
   const [filter, setFilter] = useState<'all' | 'matched' | 'discrepancy' | 'blocked'>(
@@ -210,7 +211,7 @@ export const InvoiceAuditorApp: React.FC<{
             }`}
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            <span>Zurück zur Kiventis Übersicht</span>
+            <span>{lang === 'de' ? 'Zurück zur Kiventis Übersicht' : 'Back to Kiventis Overview'}</span>
           </button>
 
           <div

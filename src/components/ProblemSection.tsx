@@ -27,8 +27,20 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ lang }) => {
           </p>
         </div>
 
-        {/* 3 Core Problem Cards (Numbered cleanly, no code comments) */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Executive TL;DR Banner for Scannability */}
+        <div className="mt-6 rounded-lg border border-amber-500/20 bg-amber-500/[0.05] px-4 py-3 flex items-center gap-3 max-w-3xl">
+          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded shrink-0">
+            EXECUTIVE TL;DR
+          </span>
+          <p className="text-xs text-amber-100/90 font-medium">
+            {lang === 'de'
+              ? '92 % aller KI-Projekte im Mittelstand scheitern nicht an der Technologie, sondern an fehlender Fachbereichs-Befähigung und ungelösten EU AI Act Haftungsfragen.'
+              : '92% of mid-market AI initiatives fail not because of tech limits, but due to lack of departmental enablement and unaddressed EU AI Act compliance liabilities.'}
+          </p>
+        </div>
+
+        {/* 3 Core Problem Cards (Bento-styled precision cards) */}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
           {t.cards.map((card, idx) => (
             <div
               key={idx}

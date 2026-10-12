@@ -82,8 +82,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         }`}
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Zone 1: Brand Wordmark */}
-          <div className="flex items-center gap-6">
+          {/* Zone 1: Brand Wordmark & Slogan */}
+          <div className="flex items-center gap-4 sm:gap-6">
             <a
               href="/"
               className="font-display text-xl font-bold tracking-tight transition-opacity hover:opacity-90 flex items-center shrink-0"
@@ -91,6 +91,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className={isSepia ? 'text-[#0D9488]' : 'text-[#14B8A6]'}>KI</span>
               <span className={isSepia ? 'text-[#18130E]' : 'text-white'}>VENTIS</span>
             </a>
+
+            <div
+              className={`hidden lg:flex items-center gap-2 pl-3 border-l text-xs font-mono transition-colors ${
+                isSepia ? 'border-[#D5C9B7] text-stone-600' : 'border-white/10 text-slate-400'
+              }`}
+            >
+              <Sparkles className="h-3.5 w-3.5 text-[#14B8A6] shrink-0" />
+              <span>Boost your processes, save license costs</span>
+            </div>
 
             {/* Desktop Navigation: Only Live-Demos + Main Menu Trigger per User Request */}
             <nav className="hidden md:flex items-center gap-3">
@@ -172,7 +181,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <>
                     <Moon className="h-3.5 w-3.5 text-amber-300 shrink-0" />
                     <span className="font-mono text-[11px] tracking-tight hidden sm:inline">
-                      Dunkel
+                      {lang === 'de' ? 'Dunkel' : 'Dark'}
                     </span>
                   </>
                 )}
@@ -462,7 +471,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         >
                           <span>{t.demos}</span>
                           <span className="text-[10px] font-mono px-1.5 py-0.2 rounded uppercase font-bold border border-current">
-                            Interaktiv
+                            {lang === 'de' ? 'Interaktiv' : 'Interactive'}
                           </span>
                         </div>
                         <div

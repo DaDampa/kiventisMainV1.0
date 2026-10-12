@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Theme } from '../../types';
+import { Theme, Language } from '../../types';
 import {
   Layers,
   ArrowLeft,
@@ -146,9 +146,10 @@ const INITIAL_BOM_DATA: BomItem[] = [
   },
 ];
 
-export const BomDesignerApp: React.FC<{ theme?: Theme; onBack: () => void }> = ({
+export const BomDesignerApp: React.FC<{ theme?: Theme; onBack: () => void; lang?: Language }> = ({
   theme = 'dark',
   onBack,
+  lang = 'de',
 }) => {
   const [items, setItems] = useState<BomItem[]>(INITIAL_BOM_DATA);
   const [search, setSearch] = useState('');
@@ -298,7 +299,7 @@ export const BomDesignerApp: React.FC<{ theme?: Theme; onBack: () => void }> = (
             }`}
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            <span>Zurück zur Kiventis Übersicht</span>
+            <span>{lang === 'de' ? 'Zurück zur Kiventis Übersicht' : 'Back to Kiventis Overview'}</span>
           </button>
 
           <div

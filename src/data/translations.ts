@@ -1175,7 +1175,7 @@ export const translations = {
     footer: {
       tagline: 'Practical B2B AI enablement, Vibe Coding, and verifiable governance for forward-thinking mid-sized enterprises.',
       locations: 'ERP and Marketing Solutions LLC · Albuquerque, NM (USA)',
-      contactEmail: 'Kontakt@kiventis.com',
+      contactEmail: 'contact@kiventis.com',
       complianceNotice: 'Official competency certifications compliant with Art. 4 of Regulation (EU) 2024/1689 (EU AI Act).',
       copyright: '© 2026 ERP and Marketing Solutions LLC (KIVENTIS). All rights reserved.',
       links: [

@@ -69,10 +69,14 @@ export const ResourceHub: React.FC<ResourceHubProps> = ({
                     <span>2025/2026</span>
                   </div>
                   <div className="mt-4 font-display text-lg font-bold text-white leading-snug">
-                    KMU-Praxisleitfaden: KI & EU AI Act
+                    {lang === 'de'
+                      ? 'KMU-Praxisleitfaden: KI & EU AI Act'
+                      : 'SME Executive Guide: AI & EU AI Act'}
                   </div>
                   <div className="text-[11px] text-slate-400 mt-1">
-                    Vibe Coding, Schulungspflicht & RAG Architekturen
+                    {lang === 'de'
+                      ? 'Vibe Coding, Schulungspflicht & RAG Architekturen'
+                      : 'Vibe Coding, Mandatory Training & RAG Architectures'}
                   </div>
                 </div>
 
@@ -83,7 +87,7 @@ export const ResourceHub: React.FC<ResourceHubProps> = ({
                 </div>
 
                 <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-[11px] font-mono text-slate-400">
-                  <span>38 SEITEN · PDF</span>
+                  <span>{lang === 'de' ? '38 SEITEN · PDF' : '38 PAGES · PDF'}</span>
                   <span className="text-emerald-400 font-semibold">FREE DOWNLOAD</span>
                 </div>
               </div>

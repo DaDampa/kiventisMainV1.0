@@ -260,11 +260,11 @@ export default function App() {
 
   // If user navigated to a dedicated standalone application page, render it full-screen in its original application UI
   if (standaloneDemo === 'bom-designer') {
-    return <BomDesignerApp theme={theme} onBack={handleBackFromStandalone} />;
+    return <BomDesignerApp theme={theme} onBack={handleBackFromStandalone} lang={lang} />;
   }
 
   if (standaloneDemo === 'rechnungspruefer') {
-    return <InvoiceAuditorApp theme={theme} onBack={handleBackFromStandalone} />;
+    return <InvoiceAuditorApp theme={theme} onBack={handleBackFromStandalone} lang={lang} />;
   }
 
   return (
@@ -383,6 +383,7 @@ export default function App() {
       <AdminLeadModal
         isOpen={isAdminLeadsOpen}
         onClose={() => setIsAdminLeadsOpen(false)}
+        lang={lang}
       />
     </div>
   );
