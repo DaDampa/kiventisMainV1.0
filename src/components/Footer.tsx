@@ -10,6 +10,7 @@ interface FooterProps {
   onOpenResource: () => void;
   onOpenImpressum: () => void;
   onOpenAdminLeads: () => void;
+  onNavigateAudit?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -19,6 +20,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenResource,
   onOpenImpressum,
   onOpenAdminLeads,
+  onNavigateAudit,
 }) => {
   const t = translations[lang].footer;
 
@@ -99,6 +101,25 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <a href="#services" className="hover:text-white transition-colors">
                   {lang === 'de' ? 'Vibe Coding & Citizen Dev' : 'Vibe Coding & Citizen Dev'}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/ai-act-audit"
+                  onClick={(e) => {
+                    if (onNavigateAudit) {
+                      e.preventDefault();
+                      onNavigateAudit();
+                    }
+                  }}
+                  className={`transition-colors font-semibold flex items-center gap-1.5 ${
+                    theme === 'sepia'
+                      ? 'text-rose-800 hover:text-rose-950'
+                      : 'text-rose-300 hover:text-rose-100'
+                  }`}
+                >
+                  <ShieldCheck className={`h-3.5 w-3.5 ${theme === 'sepia' ? 'text-rose-800' : 'text-rose-400'}`} />
+                  <span>{lang === 'de' ? 'Art. 4 Haftungs-Rechner' : 'Art. 4 Liability Calculator'}</span>
                 </a>
               </li>
               <li>

@@ -24,6 +24,7 @@ import { ImpressumModal } from './components/ImpressumModal';
 import { AdminLeadModal } from './components/AdminLeadModal';
 import { BomDesignerApp } from './components/demos/BomDesignerApp';
 import { InvoiceAuditorApp } from './components/demos/InvoiceAuditorApp';
+import { AiActAuditPage } from './components/audit/AiActAuditPage';
 import { updatePageMeta } from './utils/seo';
 import {
   getInitialThemeState,
@@ -47,7 +48,7 @@ export default function App() {
   const [isImpressumOpen, setIsImpressumOpen] = useState<boolean>(false);
   const [isAdminLeadsOpen, setIsAdminLeadsOpen] = useState<boolean>(false);
   const [preselectedPackage, setPreselectedPackage] = useState<string | undefined>(undefined);
-  const [standaloneDemo, setStandaloneDemo] = useState<'none' | 'bom-designer' | 'rechnungspruefer'>('none');
+  const [standaloneDemo, setStandaloneDemo] = useState<'none' | 'bom-designer' | 'rechnungspruefer' | 'ai-act-audit'>('none');
 
   // Sync theme with document attribute & localStorage
   useEffect(() => {
@@ -157,6 +158,34 @@ export default function App() {
         return;
       }
 
+      if (
+        path === '/ai-act-audit' ||
+        path === '/ai-act-audit/' ||
+        window.location.hash === '#ai-act-audit'
+      ) {
+        setStandaloneDemo('ai-act-audit');
+        updatePageMeta({
+          title:
+            lang === 'de'
+              ? 'EU AI Act Art. 4 Haftungs- & Bußgeld-Rechner für KMUs · KIVENTIS Audit'
+              : 'EU AI Act Art. 4 Liability & Fine Calculator for SMEs · KIVENTIS Audit',
+          description:
+            lang === 'de'
+              ? 'Kostenloser interaktiver Compliance-Check nach Art. 4 Verordnung (EU) 2024/1689. Berechnen Sie das persönliche Geschäftsführer-Haftungsrisiko (§ 43 GmbHG) und behördliche Bußgelder bis zu 15 Mio. €.'
+              : 'Free interactive SME compliance audit under Article 4 Regulation (EU) 2024/1689. Calculate personal managerial liability and statutory penalty exposure.',
+          canonical: 'https://www.kiventis.com/ai-act-audit',
+          schema: {
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'Kiventis EU AI Act Art. 4 Haftungs- & Bußgeld-Rechner',
+            applicationCategory: 'BusinessApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Interaktiver Compliance- und Haftungs-Rechner nach Art. 4 EU AI Act für den europäischen Mittelstand.',
+          },
+        });
+        return;
+      }
+
       setStandaloneDemo('none');
 
       if (path === '/beispiele' || path === '/beispiele/') {
@@ -258,6 +287,48 @@ export default function App() {
     });
   };
 
+  const handleLaunchAudit = () => {
+    setStandaloneDemo('ai-act-audit');
+    window.history.pushState(null, '', '/ai-act-audit');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    updatePageMeta({
+      title:
+        lang === 'de'
+          ? 'EU AI Act Art. 4 Haftungs- & Bußgeld-Rechner für KMUs · KIVENTIS Audit'
+          : 'EU AI Act Art. 4 Liability & Fine Calculator for SMEs · KIVENTIS Audit',
+      description:
+        lang === 'de'
+          ? 'Kostenloser interaktiver Compliance-Check nach Art. 4 Verordnung (EU) 2024/1689. Berechnen Sie das persönliche Geschäftsführer-Haftungsrisiko (§ 43 GmbHG) und behördliche Bußgelder bis zu 15 Mio. €.'
+          : 'Free interactive SME compliance audit under Article 4 Regulation (EU) 2024/1689. Calculate personal managerial liability and statutory penalty exposure.',
+      canonical: 'https://www.kiventis.com/ai-act-audit',
+      schema: {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: 'Kiventis EU AI Act Art. 4 Haftungs- & Bußgeld-Rechner',
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web Browser',
+        description: 'Interaktiver Compliance- und Haftungs-Rechner nach Art. 4 EU AI Act für den europäischen Mittelstand.',
+      },
+    });
+  };
+
+  const handleBackFromAudit = () => {
+    setStandaloneDemo('none');
+    window.history.pushState(null, '', '/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    updatePageMeta({
+      title:
+        lang === 'de'
+          ? 'KIVENTIS · B2B KI-Trainings, Vibe Coding & EU AI Act (DACH)'
+          : 'KIVENTIS · B2B AI Training, Vibe Coding & EU AI Act Compliance',
+      description:
+        lang === 'de'
+          ? 'Praxisnahes KI-Enablement, Vibe Coding & rechtssichere Zertifikate nach Art. 4 EU AI Act für den B2B-Mittelstand. Messbarer ROI in 2 bis 4 Monaten.'
+          : 'Hands-on AI enablement, Vibe Coding for domain teams & verifiable EU AI Act compliance for mid-sized enterprises. Measurable ROI in 2 to 4 months.',
+      canonical: lang === 'de' ? 'https://www.kiventis.com/' : 'https://www.kiventis.com/?lang=en',
+    });
+  };
+
   // If user navigated to a dedicated standalone application page, render it full-screen in its original application UI
   if (standaloneDemo === 'bom-designer') {
     return <BomDesignerApp theme={theme} onBack={handleBackFromStandalone} lang={lang} />;
@@ -284,11 +355,21 @@ export default function App() {
         onToggleTheme={handleToggleTheme}
         onResetToAutoTheme={handleResetToAutoTheme}
         onOpenBooking={() => handleOpenBooking()}
+        onNavigateAudit={handleLaunchAudit}
       />
 
       {/* Main Content Sections */}
       <main className="flex-grow">
-        {/* 1. Hero Section (5-Second Rule, Clear Value Proposition, Primary Action) */}
+        {standaloneDemo === 'ai-act-audit' ? (
+          <AiActAuditPage
+            lang={lang}
+            theme={theme}
+            onOpenBooking={(packageTitle) => handleOpenBooking(packageTitle)}
+            onBackToHome={handleBackFromAudit}
+          />
+        ) : (
+          <>
+            {/* 1. Hero Section (5-Second Rule, Clear Value Proposition, Primary Action) */}
         <Hero
           lang={lang}
           onOpenBooking={() => handleOpenBooking()}
@@ -348,6 +429,8 @@ export default function App() {
           onOpenBooking={() => handleOpenBooking()}
           onOpenResource={handleOpenResource}
         />
+          </>
+        )}
       </main>
 
       {/* 11. Quiet B2B Footer */}
@@ -358,6 +441,7 @@ export default function App() {
         onOpenResource={handleOpenResource}
         onOpenImpressum={() => setIsImpressumOpen(true)}
         onOpenAdminLeads={() => setIsAdminLeadsOpen(true)}
+        onNavigateAudit={handleLaunchAudit}
       />
 
       {/* Interactive Modals */}

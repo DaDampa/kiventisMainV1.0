@@ -160,7 +160,7 @@ export const exportLeadsToCsv = (leads: CustomerLead[]): void => {
 
   const rows = leads.map((l) => [
     l.id,
-    l.type === 'guide_download' ? 'Praxisleitfaden 38S' : 'Erstgespräch Termin',
+    l.type === 'guide_download' ? 'Praxisleitfaden 38S' : l.type === 'ai_act_audit' ? 'EU AI Act Audit Report' : 'Erstgespräch Termin',
     l.status,
     `"${(l.name || '').replace(/"/g, '""')}"`,
     l.email,

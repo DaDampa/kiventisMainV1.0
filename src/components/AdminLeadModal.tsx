@@ -187,6 +187,7 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose,
 
   const guideCount = leads.filter((l) => l.type === 'guide_download').length;
   const bookingCount = leads.filter((l) => l.type === 'discovery_booking').length;
+  const auditCount = leads.filter((l) => l.type === 'ai_act_audit').length;
   const hasSampleData = leads.some(isSampleLead);
 
   // -------------------------------------------------------------
@@ -491,6 +492,16 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose,
               >
                 {isDe ? `Termine (${bookingCount})` : `Bookings (${bookingCount})`}
               </button>
+              <button
+                onClick={() => setFilterType('ai_act_audit')}
+                className={`px-2.5 py-1.5 rounded-lg border text-xs cursor-pointer ${
+                  filterType === 'ai_act_audit'
+                    ? 'border-rose-500 bg-rose-500/15 text-rose-300 font-semibold'
+                    : 'border-white/10 bg-white/[0.02] text-slate-400 hover:text-white'
+                }`}
+              >
+                {isDe ? `AI Act Audit (${auditCount})` : `AI Act Audit (${auditCount})`}
+              </button>
             </div>
           </div>
 
@@ -554,10 +565,16 @@ export const AdminLeadModal: React.FC<AdminLeadModalProps> = ({ isOpen, onClose,
                           className={`px-2 py-0.5 rounded text-[10px] font-mono font-semibold ${
                             lead.type === 'guide_download'
                               ? 'bg-teal-500/15 text-teal-300 border border-teal-500/30'
+                              : lead.type === 'ai_act_audit'
+                              ? 'bg-rose-500/15 text-rose-300 border border-rose-500/30'
                               : 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
                           }`}
                         >
-                          {lead.type === 'guide_download' ? '38S Leitfaden' : 'Erstberatung Termin'}
+                          {lead.type === 'guide_download'
+                            ? '38S Leitfaden'
+                            : lead.type === 'ai_act_audit'
+                            ? 'AI Act Audit'
+                            : 'Erstberatung Termin'}
                         </span>
                         {lead.doubleOptInConfirmed && (
                           <span className="flex items-center gap-1 text-[10px] font-mono text-emerald-400">

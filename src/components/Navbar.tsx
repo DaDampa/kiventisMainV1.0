@@ -29,6 +29,7 @@ interface NavbarProps {
   onToggleTheme: () => void;
   onResetToAutoTheme?: () => void;
   onOpenBooking: () => void;
+  onNavigateAudit?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -39,6 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleTheme,
   onResetToAutoTheme,
   onOpenBooking,
+  onNavigateAudit,
 }) => {
   const t = translations[lang].nav;
   const [menuOpen, setMenuOpen] = useState(false);
@@ -93,8 +95,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
 
             <div
-              className={`hidden lg:flex items-center gap-2 pl-3 border-l text-xs font-mono transition-colors ${
-                isSepia ? 'border-[#D5C9B7] text-stone-600' : 'border-white/10 text-slate-400'
+              className={`hidden lg:flex items-center gap-2 pl-3 border-l text-xs font-mono font-medium transition-colors ${
+                isSepia ? 'border-[#D5C9B7] text-stone-900 font-semibold' : 'border-white/20 text-slate-100 font-semibold'
               }`}
             >
               <Sparkles className="h-3.5 w-3.5 text-[#14B8A6] shrink-0" />
@@ -104,11 +106,29 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-2">
               <a
-                href="#beispiele"
-                className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+                href="/ai-act-audit"
+                onClick={(e) => {
+                  if (onNavigateAudit) {
+                    e.preventDefault();
+                    onNavigateAudit();
+                  }
+                }}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-colors ${
                   isSepia
-                    ? 'text-[#5C5042] hover:text-[#18130E] hover:bg-[#EFE8DC]'
-                    : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
+                    ? 'text-rose-900 bg-rose-100/90 hover:bg-rose-200/90 border border-rose-300'
+                    : 'text-rose-200 bg-rose-950/60 hover:bg-rose-900/80 border border-rose-500/50'
+                }`}
+              >
+                <ShieldCheck className={`h-4 w-4 ${isSepia ? 'text-rose-800' : 'text-rose-400'}`} />
+                <span>EU AI Act Audit</span>
+              </a>
+
+              <a
+                href="#beispiele"
+                className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-colors ${
+                  isSepia
+                    ? 'text-[#18130E] hover:text-black hover:bg-[#EFE8DC]'
+                    : 'text-slate-100 hover:text-white hover:bg-white/[0.08]'
                 }`}
               >
                 <span>{t.demos}</span>
@@ -375,6 +395,59 @@ export const Navbar: React.FC<NavbarProps> = ({
                           {lang === 'de'
                             ? 'Vibe Coding, Citizen Development & operative KI-Integration'
                             : 'Practical AI tools & Citizen Dev without software engineers'}
+                        </div>
+                      </div>
+                    </a>
+
+                    <a
+                      href="/ai-act-audit"
+                      onClick={(e) => {
+                        handleNavClick();
+                        if (onNavigateAudit) {
+                          e.preventDefault();
+                          onNavigateAudit();
+                        }
+                      }}
+                      className={`group flex items-start gap-3 p-3 rounded-xl transition-all ${
+                        isSepia ? 'hover:bg-[#EFE8DC]' : 'hover:bg-white/[0.05]'
+                      }`}
+                    >
+                      <div
+                        className={`h-9 w-9 rounded-lg border flex items-center justify-center shrink-0 ${
+                          isSepia
+                            ? 'border-rose-300 bg-rose-50 text-rose-700'
+                            : 'border-rose-500/30 bg-rose-500/10 text-rose-400'
+                        }`}
+                      >
+                        <ShieldCheck className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <div
+                          className={`font-semibold text-sm flex items-center gap-1.5 ${
+                            isSepia
+                              ? 'group-hover:text-rose-900 text-rose-900'
+                              : 'group-hover:text-rose-300 text-white'
+                          }`}
+                        >
+                          <span>{lang === 'de' ? 'EU AI Act Art. 4 Audit' : 'EU AI Act Art. 4 Audit'}</span>
+                          <span
+                            className={`text-[10px] font-mono px-1.5 py-0.5 rounded uppercase font-bold border ${
+                              isSepia
+                                ? 'border-rose-300 bg-rose-100 text-rose-900'
+                                : 'border-rose-500/40 bg-rose-500/20 text-rose-300'
+                            }`}
+                          >
+                            Check
+                          </span>
+                        </div>
+                        <div
+                          className={`text-xs mt-0.5 ${
+                            isSepia ? 'text-[#382F26]' : 'text-slate-200'
+                          }`}
+                        >
+                          {lang === 'de'
+                            ? 'Interaktiver Haftungs- & Bußgeld-Rechner für KMU-Geschäftsführer'
+                            : 'Interactive personal liability & fine calculator for executive leadership'}
                         </div>
                       </div>
                     </a>

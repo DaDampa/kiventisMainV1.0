@@ -252,9 +252,8 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({
                       <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80 inline-block" />
                       <span className="ml-2 font-mono text-slate-300">kiventis-builder@enterprise:~$</span>
                     </div>
-                    <span className="text-teal-400 font-semibold flex items-center gap-1">
-                      <span className="h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse" />
-                      {lang === 'de' ? 'LIVE PROMPT-TO-APP' : 'LIVE PROMPT-TO-APP'}
+                    <span className="text-teal-400 font-mono text-[11px] font-semibold">
+                      PROMPT-TO-APP
                     </span>
                   </div>
 

@@ -1,4 +1,4 @@
-export type LeadType = 'guide_download' | 'discovery_booking' | 'contact_request';
+export type LeadType = 'guide_download' | 'discovery_booking' | 'contact_request' | 'ai_act_audit';
 
 export type LeadStatus = 'new' | 'verified' | 'contacted' | 'converted';
 
